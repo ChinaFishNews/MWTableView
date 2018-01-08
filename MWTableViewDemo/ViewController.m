@@ -79,7 +79,7 @@
 
 #pragma mark -
 #pragma mark MWTableViewViewMaker
-- (void)mwTableViewForTableViewDidSelectIndexPath:(NSIndexPath *)indexPath entity:(MWTableViewCellEntity *)entity {
+- (void)mwTableViewDidSelectIndexPath:(NSIndexPath *)indexPath entity:(MWTableViewCellEntity *)entity {
     
 }
 

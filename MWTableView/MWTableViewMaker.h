@@ -18,7 +18,7 @@
 
 @protocol MWTableViewMakerDelegate
 
-- (void)mwTableViewForTableViewDidSelectIndexPath:(NSIndexPath *)indexPath entity:(MWTableViewCellEntity *)entity;
+- (void)mwTableViewDidSelectIndexPath:(NSIndexPath *)indexPath entity:(MWTableViewCellEntity *)entity;
 
 @end
 

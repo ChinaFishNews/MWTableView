@@ -11,6 +11,8 @@
 
 @interface MWDataSource : NSObject
 
+/* 索引栏标题数组 */
+@property (nonatomic, strong) NSArray *indexTitles;
 @property (nonatomic, strong) NSArray<MWSectionEntity *> *sections;
 
 @end

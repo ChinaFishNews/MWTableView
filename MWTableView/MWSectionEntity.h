@@ -13,6 +13,8 @@
 
 @interface MWSectionEntity : NSObject
 
+/* tableView头视图标题 */
+@property (nonatomic, copy) NSString *titleForHeader;
 @property (nonatomic, strong) MWHeaderEntity *header;
 @property (nonatomic, strong) MWFooterEntity *footer;
 @property (nonatomic, strong) NSArray<MWTableViewCellEntity *> *cells;

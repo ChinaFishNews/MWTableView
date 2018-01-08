@@ -85,7 +85,24 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self.delegate mwTableViewForTableViewDidSelectIndexPath:indexPath entity:[self.dataSource mwTableViewMakeDataSourceForMe].sections[indexPath.section].cells[indexPath.row]];
+    [self.delegate mwTableViewDidSelectIndexPath:indexPath entity:[self.dataSource mwTableViewMakeDataSourceForMe].sections[indexPath.section].cells[indexPath.row]];
+}
+
+#pragma mark -
+#pragma mark tableView索引相关设置
+//添加TableView头视图标题
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return [self.dataSource mwTableViewMakeDataSourceForMe].sections[section].titleForHeader;
+}
+
+//添加索引栏标题数组
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
+    return  [self.dataSource mwTableViewMakeDataSourceForMe].indexTitles;
+}
+
+//点击索引栏标题时执行
+- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index {
+    return [[UILocalizedIndexedCollation currentCollation] sectionForSectionIndexTitleAtIndex:index];
 }
 
 #pragma mark -
