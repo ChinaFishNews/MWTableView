@@ -26,7 +26,10 @@
 - (void)configUIWithParams:(id)params {
     [super configUIWithParams:params];
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        self.picImageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:params[@"imgUrl"]]]];
+        UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:params[@"imgUrl"]]]];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.picImageView.image = image;
+        });
     });
 }
 

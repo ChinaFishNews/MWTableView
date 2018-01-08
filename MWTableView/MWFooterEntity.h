@@ -11,8 +11,11 @@
 
 @interface MWFooterEntity : NSObject
 
+/* 参数 */
 @property (nonatomic, strong) id params;
+/* footer视图 */
 @property (nonatomic, strong) MWTableViewBaseFooterView *footerView;
+/* footer高度 */
 @property (nonatomic, assign) CGFloat footerViewHeight;
 
 - (void)configUI;

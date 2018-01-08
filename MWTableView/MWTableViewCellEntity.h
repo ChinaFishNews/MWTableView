@@ -11,8 +11,11 @@
 
 @interface MWTableViewCellEntity : NSObject
 
+/* 参数 */
 @property (nonatomic, strong) id params;
+/* cell的identifier */
 @property (nonatomic, copy) NSString *identifier;
+/* cell高度 */
 @property (nonatomic, assign) CGFloat cellHeight;
 
 @end

@@ -19,6 +19,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
+        self.backgroundColor = [UIColor whiteColor];
         [self addSubview:self.titleLabel];
     }
     return self;

@@ -11,8 +11,11 @@
 
 @interface MWHeaderEntity : NSObject
 
+/* 参数 */
 @property (nonatomic, strong) id params;
+/* header视图 */
 @property (nonatomic, strong) MWTableViewBaseHeaderView *headerView;
+/* header高度 */
 @property (nonatomic, assign) CGFloat headerViewHeight;
 
 - (void)configUI;

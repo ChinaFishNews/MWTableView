@@ -13,6 +13,7 @@
 
 /* 索引栏标题数组 */
 @property (nonatomic, strong) NSArray *indexTitles;
+/* MWSectionEntity对象数组 */
 @property (nonatomic, strong) NSArray<MWSectionEntity *> *sections;
 
 @end

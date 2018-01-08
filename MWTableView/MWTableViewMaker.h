@@ -11,13 +11,16 @@
 
 @protocol MWTableViewMakerDataSource
 
+/* 生成数据源 */
 - (MWDataSource *)mwTableViewMakeDataSourceForMe;
+/* 生成cell，identifier默认传cell所属类的字符串 */
 - (MWTableViewBaseCell *)makeCellForTableView:(UITableView *)tableView identifier:(NSString *)identifier;
 
 @end
 
 @protocol MWTableViewMakerDelegate
 
+/* 选中某一条cell，回传indexPath和cellEntity */
 - (void)mwTableViewDidSelectIndexPath:(NSIndexPath *)indexPath entity:(MWTableViewCellEntity *)entity;
 
 @end
@@ -27,9 +30,12 @@
 @property (nonatomic, weak) id<MWTableViewMakerDataSource> dataSource;
 @property (nonatomic, weak) id<MWTableViewMakerDelegate> delegate;
 
+/* 初始化传参 */
 - (instancetype)initWithFrame:(CGRect)frame
                 contentInsets:(UIEdgeInsets)contentInsets;
+/* 获取tableView */
 - (UITableView *)tableView;
+/* 刷新数据 */
 - (void)reloadData;
 
 @end

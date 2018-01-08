@@ -15,8 +15,11 @@
 
 /* tableView头视图标题 */
 @property (nonatomic, copy) NSString *titleForHeader;
+/* header */
 @property (nonatomic, strong) MWHeaderEntity *header;
+/* footer */
 @property (nonatomic, strong) MWFooterEntity *footer;
+/* cells */
 @property (nonatomic, strong) NSArray<MWTableViewCellEntity *> *cells;
 
 @end
