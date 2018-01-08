@@ -1,6 +1,7 @@
 # MWTableView
 
 [![Build Status](https://travis-ci.org/mingway1991/MWTableView.svg?branch=master)](https://travis-ci.org/mingway1991/MWTableView)
+[![Version](https://img.shields.io/cocoapods/v/MWTableView.svg?style=flat)](http://cocoapods.org/pods/MWTableView)
 
 ## 安装
 
