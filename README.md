@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/mingway1991/MWTableView.svg?branch=master)](https://travis-ci.org/mingway1991/MWTableView)
 [![Version](https://img.shields.io/cocoapods/v/MWTableView.svg?style=flat)](http://cocoapods.org/pods/MWTableView)
+[![License](https://img.shields.io/cocoapods/l/MWTableView.svg?style=flat)](http://cocoapods.org/pods/MWTableView)
+[![Platform](https://img.shields.io/cocoapods/p/MWTableView.svg?style=flat)](http://cocoapods.org/pods/MWTableView)
 
 ## 安装
 
