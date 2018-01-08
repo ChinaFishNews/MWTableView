@@ -7,49 +7,97 @@
 //
 
 #import "MWTableViewMaker.h"
-#import "MWTableViewObject.h"
 
-@interface MWTableViewMaker () <MWTableViewObjectDelegate>
-
-@property (nonatomic, strong) MWTableViewObject *tableViewObject;
+@interface MWTableViewMaker () <UITableViewDelegate, UITableViewDataSource>
+{
+    MWDataSource *_dataSourceEntity;
+    CGRect _frame;
+    UIEdgeInsets _contentInsets;
+}
+@property (nonatomic, strong) UITableView *mwTableView;
 
 @end
 
 @implementation MWTableViewMaker
 
-- (instancetype)init {
+- (instancetype)initWithFrame:(CGRect)frame
+                contentInsets:(UIEdgeInsets)contentInsets {
     self = [super init];
     if (self) {
-        
+        _frame = frame;
+        _contentInsets = contentInsets;
     }
     return self;
 }
 
-- (UITableView *)generateTableViewWithFrame:(CGRect)frame
-                              contentInsets:(UIEdgeInsets)contentInsets {
-    self.tableViewObject = [[MWTableViewObject alloc] initWithDataSource:[self.dataSourceMaker mwTableViewMakeDataSourceForMe]
-                                                                                 frame:frame
-                                                           contentInsets:contentInsets];
-    self.tableViewObject.delegate = self;
-    return self.tableViewObject.tableView;
+- (UITableView *)tableView {
+    return self.mwTableView;
 }
 
 - (void)reloadData {
-    [self.tableViewObject reloadWithDataSource:[self.dataSourceMaker mwTableViewMakeDataSourceForMe]];
+    [self.tableView reloadData];
 }
 
 #pragma mark -
-#pragma mark MWTableViewObjectDelegate
-- (MWTableViewBaseCell *)makeCellForTableView:(UITableView *)tableView identifier:(NSString *)identifier {
-    return [self.dataSourceMaker makeCellForMeWithTableView:tableView identifier:identifier];
+#pragma mark UITableViewDataSource
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return [self.dataSource mwTableViewMakeDataSourceForMe].sections.count;
 }
 
-- (void)mwTableViewForTableViewDidSelectIndexPath:(NSIndexPath *)indexPath entity:(MWTableViewCellEntity *)entity {
-    [self.delegateMaker mwTableViewForMeDidSelectIndexPath:indexPath entity:entity];
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [self.dataSource mwTableViewMakeDataSourceForMe].sections[section].cells.count;
 }
 
-//返回tableView方法
-//传递dataSource方法
-//根据dataSource构造tableView，将cell实现通过协议代理出去
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    MWTableViewCellEntity *cellEntity = [self.dataSource mwTableViewMakeDataSourceForMe].sections[indexPath.section].cells[indexPath.row];
+    MWTableViewBaseCell *cell = [tableView dequeueReusableCellWithIdentifier:cellEntity.identifier];
+    if (!cell) {
+        cell = [self.dataSource makeCellForTableView:tableView identifier:cellEntity.identifier];
+    }
+    [cell configUIWithParams:cellEntity.params];
+    return cell;
+}
+
+#pragma mark -
+#pragma mark UITableViewDelegate
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    MWHeaderEntity *headerEntity = [self.dataSource mwTableViewMakeDataSourceForMe].sections[section].header;
+    [headerEntity configUI];
+    return headerEntity.headerView;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    MWFooterEntity *footerEntity = [self.dataSource mwTableViewMakeDataSourceForMe].sections[section].footer;
+    [footerEntity configUI];
+    return footerEntity.footerView;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [self.dataSource mwTableViewMakeDataSourceForMe].sections[indexPath.section].cells[indexPath.row].cellHeight;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return [self.dataSource mwTableViewMakeDataSourceForMe].sections[section].header.headerViewHeight;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return [self.dataSource mwTableViewMakeDataSourceForMe].sections[section].footer.footerViewHeight;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.delegate mwTableViewForTableViewDidSelectIndexPath:indexPath entity:[self.dataSource mwTableViewMakeDataSourceForMe].sections[indexPath.section].cells[indexPath.row]];
+}
+
+#pragma mark -
+#pragma mark Lazy Load
+- (UITableView *)mwTableView {
+    if (!_mwTableView) {
+        self.mwTableView = [[UITableView alloc] initWithFrame:_frame];
+        _mwTableView.delegate = self;
+        _mwTableView.dataSource = self;
+        _mwTableView.contentInset = _contentInsets;
+    }
+    return _mwTableView;
+}
 
 @end

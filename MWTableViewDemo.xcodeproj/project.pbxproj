@@ -14,9 +14,8 @@
 		7A56321C1FFF505A00C7A6B0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5632141FFF505A00C7A6B0 /* main.m */; };
 		7A56321D1FFF505A00C7A6B0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5632151FFF505A00C7A6B0 /* AppDelegate.m */; };
 		7A56321E1FFF505A00C7A6B0 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A5632161FFF505A00C7A6B0 /* Info.plist */; };
-		7A5632221FFF510900C7A6B0 /* MWTableViewObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5632211FFF510900C7A6B0 /* MWTableViewObject.m */; };
+		7A5632221FFF510900C7A6B0 /* MWTableViewMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5632211FFF510900C7A6B0 /* MWTableViewMaker.m */; };
 		7A5632281FFF54CE00C7A6B0 /* MWDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5632271FFF54CE00C7A6B0 /* MWDataSource.m */; };
-		7A56322B1FFF551E00C7A6B0 /* MWTableViewMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A56322A1FFF551E00C7A6B0 /* MWTableViewMaker.m */; };
 		7A56322E1FFF56D500C7A6B0 /* MWSectionEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A56322D1FFF56D500C7A6B0 /* MWSectionEntity.m */; };
 		7A5632311FFF56E200C7A6B0 /* MWHeaderEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5632301FFF56E200C7A6B0 /* MWHeaderEntity.m */; };
 		7A5632341FFF56EA00C7A6B0 /* MWFooterEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5632331FFF56EA00C7A6B0 /* MWFooterEntity.m */; };
@@ -40,12 +39,10 @@
 		7A5632151FFF505A00C7A6B0 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		7A5632161FFF505A00C7A6B0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A5632171FFF505A00C7A6B0 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		7A5632201FFF510900C7A6B0 /* MWTableViewObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWTableViewObject.h; sourceTree = "<group>"; };
-		7A5632211FFF510900C7A6B0 /* MWTableViewObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWTableViewObject.m; sourceTree = "<group>"; };
+		7A5632201FFF510900C7A6B0 /* MWTableViewMaker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWTableViewMaker.h; sourceTree = "<group>"; };
+		7A5632211FFF510900C7A6B0 /* MWTableViewMaker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWTableViewMaker.m; sourceTree = "<group>"; };
 		7A5632261FFF54CE00C7A6B0 /* MWDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWDataSource.h; sourceTree = "<group>"; };
 		7A5632271FFF54CE00C7A6B0 /* MWDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWDataSource.m; sourceTree = "<group>"; };
-		7A5632291FFF551E00C7A6B0 /* MWTableViewMaker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWTableViewMaker.h; sourceTree = "<group>"; };
-		7A56322A1FFF551E00C7A6B0 /* MWTableViewMaker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWTableViewMaker.m; sourceTree = "<group>"; };
 		7A56322C1FFF56D500C7A6B0 /* MWSectionEntity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWSectionEntity.h; sourceTree = "<group>"; };
 		7A56322D1FFF56D500C7A6B0 /* MWSectionEntity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWSectionEntity.m; sourceTree = "<group>"; };
 		7A56322F1FFF56E200C7A6B0 /* MWHeaderEntity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWHeaderEntity.h; sourceTree = "<group>"; };
@@ -121,10 +118,8 @@
 		7A56321F1FFF506900C7A6B0 /* MWTableView */ = {
 			isa = PBXGroup;
 			children = (
-				7A5632291FFF551E00C7A6B0 /* MWTableViewMaker.h */,
-				7A56322A1FFF551E00C7A6B0 /* MWTableViewMaker.m */,
-				7A5632201FFF510900C7A6B0 /* MWTableViewObject.h */,
-				7A5632211FFF510900C7A6B0 /* MWTableViewObject.m */,
+				7A5632201FFF510900C7A6B0 /* MWTableViewMaker.h */,
+				7A5632211FFF510900C7A6B0 /* MWTableViewMaker.m */,
 				7A5632261FFF54CE00C7A6B0 /* MWDataSource.h */,
 				7A5632271FFF54CE00C7A6B0 /* MWDataSource.m */,
 				7A56322C1FFF56D500C7A6B0 /* MWSectionEntity.h */,
@@ -218,7 +213,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A56321C1FFF505A00C7A6B0 /* main.m in Sources */,
-				7A56322B1FFF551E00C7A6B0 /* MWTableViewMaker.m in Sources */,
 				7A5632191FFF505A00C7A6B0 /* ViewController.m in Sources */,
 				7A56321D1FFF505A00C7A6B0 /* AppDelegate.m in Sources */,
 				7A5632401FFF6C9C00C7A6B0 /* MWTableViewBaseFooterView.m in Sources */,
@@ -228,7 +222,7 @@
 				7A5632371FFF56FC00C7A6B0 /* MWTableViewCellEntity.m in Sources */,
 				7A5632341FFF56EA00C7A6B0 /* MWFooterEntity.m in Sources */,
 				7A5632281FFF54CE00C7A6B0 /* MWDataSource.m in Sources */,
-				7A5632221FFF510900C7A6B0 /* MWTableViewObject.m in Sources */,
+				7A5632221FFF510900C7A6B0 /* MWTableViewMaker.m in Sources */,
 				7A56322E1FFF56D500C7A6B0 /* MWSectionEntity.m in Sources */,
 				7A5632431FFF6DFB00C7A6B0 /* FirstTableViewCell.m in Sources */,
 				7A56323A1FFF6AC400C7A6B0 /* MWTableViewBaseCell.m in Sources */,

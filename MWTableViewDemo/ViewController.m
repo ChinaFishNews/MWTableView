@@ -12,7 +12,7 @@
 #import "SecondTableViewCell.h"
 #import "TestHeaderView.h"
 
-@interface ViewController () <MWTableViewDataSourceMaker, MWTableViewViewMaker>
+@interface ViewController () <MWTableViewMakerDelegate, MWTableViewMakerDataSource>
 
 @property (nonatomic, strong) MWTableViewMaker *maker;
 
@@ -22,10 +22,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.maker = [[MWTableViewMaker alloc] init];
-    self.maker.dataSourceMaker = self;
-    self.maker.delegateMaker = self;
-    [self.view addSubview:[self.maker generateTableViewWithFrame:self.view.bounds contentInsets:UIEdgeInsetsZero]];
+    self.maker = [[MWTableViewMaker alloc] initWithFrame:self.view.bounds contentInsets:UIEdgeInsetsZero];
+    self.maker.dataSource = self;
+    self.maker.delegate = self;
+    [self.view addSubview:self.maker.tableView];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -67,7 +67,7 @@
     return dataSource;
 }
 
-- (MWTableViewBaseCell *)makeCellForMeWithTableView:(UITableView *)tabelView identifier:(NSString *)identifier {
+- (MWTableViewBaseCell *)makeCellForTableView:(UITableView *)tableView identifier:(NSString *)identifier {
     MWTableViewBaseCell *cell;
     if ([identifier isEqualToString:NSStringFromClass([FirstTableViewCell class])]) {
         cell = [[FirstTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
@@ -79,5 +79,8 @@
 
 #pragma mark -
 #pragma mark MWTableViewViewMaker
+- (void)mwTableViewForTableViewDidSelectIndexPath:(NSIndexPath *)indexPath entity:(MWTableViewCellEntity *)entity {
+    
+}
 
 @end
