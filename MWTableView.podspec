@@ -8,7 +8,6 @@ Pod::Spec.new do |s|
   s.author       = { "shimingwei" => "mingwei.shi@hotmail.com" }
   s.source       = { :git => "https://github.com/mingway1991/MWTableView.git", :tag => "#{s.version}" }
   s.source_files = "MWTableView/**/*.{h,m}"
-  s.requires_arc = false
   s.ios.deployment_target = '7.0'
   s.frameworks = 'UIKit'
 end
