@@ -12,12 +12,13 @@
 @protocol MWTableViewDataSourceMaker
 
 - (MWDataSource *)mwTableViewMakeDataSourceForMe;
+- (MWTableViewBaseCell *)makeCellForMeWithTableView:(UITableView *)tabelView identifier:(NSString *)identifier;
 
 @end
 
 @protocol MWTableViewViewMaker
 
-- (MWTableViewBaseCell *)makeCellForMeWithTableView:(UITableView *)tabelView identifier:(NSString *)identifier;
+- (void)mwTableViewForMeDidSelectIndexPath:(NSIndexPath *)indexPath entity:(MWTableViewCellEntity *)entity;
 
 @end
 
@@ -25,7 +26,8 @@
 
 @property (nonatomic, weak) id<MWTableViewViewMaker> delegateMaker;
 @property (nonatomic, weak) id<MWTableViewDataSourceMaker> dataSourceMaker;
-- (UITableView *)generateTableViewWithFrame:(CGRect)frame;
+- (UITableView *)generateTableViewWithFrame:(CGRect)frame
+                              contentInsets:(UIEdgeInsets)contentInsets;
 - (void)reloadData;
 
 @end

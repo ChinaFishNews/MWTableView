@@ -25,9 +25,11 @@
     return self;
 }
 
-- (UITableView *)generateTableViewWithFrame:(CGRect)frame {
+- (UITableView *)generateTableViewWithFrame:(CGRect)frame
+                              contentInsets:(UIEdgeInsets)contentInsets {
     self.tableViewObject = [[MWTableViewObject alloc] initWithDataSource:[self.dataSourceMaker mwTableViewMakeDataSourceForMe]
-                                                                                 frame:frame];
+                                                                                 frame:frame
+                                                           contentInsets:contentInsets];
     self.tableViewObject.delegate = self;
     return self.tableViewObject.tableView;
 }
@@ -39,7 +41,11 @@
 #pragma mark -
 #pragma mark MWTableViewObjectDelegate
 - (MWTableViewBaseCell *)makeCellForTableView:(UITableView *)tableView identifier:(NSString *)identifier {
-    return [self.delegateMaker makeCellForMeWithTableView:tableView identifier:identifier];
+    return [self.dataSourceMaker makeCellForMeWithTableView:tableView identifier:identifier];
+}
+
+- (void)mwTableViewForTableViewDidSelectIndexPath:(NSIndexPath *)indexPath entity:(MWTableViewCellEntity *)entity {
+    [self.delegateMaker mwTableViewForMeDidSelectIndexPath:indexPath entity:entity];
 }
 
 //返回tableView方法

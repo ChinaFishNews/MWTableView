@@ -25,7 +25,9 @@
 
 - (void)configUIWithParams:(id)params {
     [super configUIWithParams:params];
-    self.picImageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:params[@"imgUrl"]]]];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        self.picImageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:params[@"imgUrl"]]]];
+    });
 }
 
 + (CGFloat)cellHeight {

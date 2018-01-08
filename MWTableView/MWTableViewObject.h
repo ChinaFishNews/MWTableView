@@ -12,6 +12,7 @@
 @protocol MWTableViewObjectDelegate
 
 - (MWTableViewBaseCell *)makeCellForTableView:(UITableView *)tableView identifier:(NSString *)identifier;
+- (void)mwTableViewForTableViewDidSelectIndexPath:(NSIndexPath *)indexPath entity:(MWTableViewCellEntity *)entity;
 
 @end
 
@@ -20,7 +21,8 @@
 @property (nonatomic, weak) id<MWTableViewObjectDelegate> delegate;
 
 - (instancetype)initWithDataSource:(MWDataSource *)dataSource
-                             frame:(CGRect)frame;
+                             frame:(CGRect)frame
+                     contentInsets:(UIEdgeInsets)contentInsets;
 - (UITableView *)tableView;
 - (void)reloadWithDataSource:(MWDataSource *)dataSource;
 

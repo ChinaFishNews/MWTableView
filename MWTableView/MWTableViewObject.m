@@ -12,6 +12,7 @@
 {
     MWDataSource *_dataSource;
     CGRect _frame;
+    UIEdgeInsets _contentInsets;
 }
 @property (nonatomic, strong) UITableView *mwTableView;
 
@@ -20,11 +21,13 @@
 @implementation MWTableViewObject
 
 - (instancetype)initWithDataSource:(MWDataSource *)dataSource
-                             frame:(CGRect)frame {
+                             frame:(CGRect)frame
+                     contentInsets:(UIEdgeInsets)contentInsets {
     self = [super init];
     if (self) {
         _dataSource = dataSource;
         _frame = frame;
+        _contentInsets = contentInsets;
     }
     return self;
 }
@@ -85,7 +88,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    [self.delegate mwTableViewForTableViewDidSelectIndexPath:indexPath entity:_dataSource.sections[indexPath.section].cells[indexPath.row]];
 }
 
 #pragma mark -
@@ -95,6 +98,7 @@
         self.mwTableView = [[UITableView alloc] initWithFrame:_frame];
         _mwTableView.delegate = self;
         _mwTableView.dataSource = self;
+        _mwTableView.contentInset = _contentInsets;
     }
     return _mwTableView;
 }

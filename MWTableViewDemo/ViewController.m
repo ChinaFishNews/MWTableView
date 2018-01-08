@@ -25,7 +25,7 @@
     self.maker = [[MWTableViewMaker alloc] init];
     self.maker.dataSourceMaker = self;
     self.maker.delegateMaker = self;
-    [self.view addSubview:[self.maker generateTableViewWithFrame:self.view.bounds]];
+    [self.view addSubview:[self.maker generateTableViewWithFrame:self.view.bounds contentInsets:UIEdgeInsetsZero]];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -67,8 +67,6 @@
     return dataSource;
 }
 
-#pragma mark -
-#pragma mark MWTableViewViewMaker
 - (MWTableViewBaseCell *)makeCellForMeWithTableView:(UITableView *)tabelView identifier:(NSString *)identifier {
     MWTableViewBaseCell *cell;
     if ([identifier isEqualToString:NSStringFromClass([FirstTableViewCell class])]) {
@@ -78,5 +76,8 @@
     }
     return cell;
 }
+
+#pragma mark -
+#pragma mark MWTableViewViewMaker
 
 @end
