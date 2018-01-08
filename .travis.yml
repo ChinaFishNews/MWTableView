@@ -1,0 +1,4 @@
+language: objective-c
+osx_image: xcode9
+xcode_project: MWTableViewDemo.xcodeproj
+script: xcodebuild -project MWTableViewDemo.xcodeproj -target MWTableViewDemo -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
